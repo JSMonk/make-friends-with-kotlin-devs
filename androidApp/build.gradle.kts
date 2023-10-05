@@ -13,9 +13,6 @@ kotlin {
 android {
     compileSdk = 35
     namespace = "example.profile"
-    buildFeatures {
-        buildConfig = true
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -26,7 +23,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "API_URL", "\"http://10.0.2.2:9090\"")
     }
 }
 

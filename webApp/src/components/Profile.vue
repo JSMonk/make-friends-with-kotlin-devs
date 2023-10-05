@@ -2,10 +2,10 @@
 import {ref, watch} from "vue";
 import TalkInfo from "@/components/TalkInfo.vue";
 import SpeakerInfo from "@/components/SpeakerInfo.vue";
-import {fetchTalkInfo, updateTalkInfo} from "@/services/talks";
-import {JsValidationResult, runValidations, Talk, talkValidation} from "conference-cms-common";
+import {JsValidationResult, ProfileViewModel, runValidations, Talk, talkValidation} from "conference-cms-common";
 
-const talk = ref(await fetchTalkInfo())
+const vm = new ProfileViewModel()
+const talk = ref(await vm.fetchTalkInfo())
 const validations = ref<JsValidationResult<Talk> | undefined>()
 watch(talk.value, (newTalk) => {
   const validationResult = runValidations(talkValidation.get(), newTalk)
@@ -17,7 +17,7 @@ watch(talk.value, (newTalk) => {
   <div class="content">
     <header>
       <div class="container save-button-container">
-        <button class="save" :disabled="validations !== undefined" @click="updateTalkInfo(talk)">Save</button>
+        <button class="save" :disabled="validations !== undefined" @click="vm.updateTalkInfo(talk)">Save</button>
         <SpeakerInfo
             :validations="validations"
             v-model:name="talk.speaker.name"
