@@ -30,3 +30,13 @@ kotlin {
         }
     }
 }
+
+//val copyJsResources = tasks.create("copyJsResourcesWorkaround", Copy::class) {
+//    dependsOn(tasks.getByName("jsDevelopmentExecutableCompileSync"))
+//    from(project(":common").file("src/commonMain/resources"))
+//    into("build/processedResources/js/main")
+//}
+//
+//afterEvaluate {
+//    tasks.getByName("jsProcessResources").finalizedBy(copyJsResources)
+//}

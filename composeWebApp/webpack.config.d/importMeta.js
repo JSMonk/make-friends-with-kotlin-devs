@@ -1,7 +1,7 @@
 const webpack = require("webpack")
 
 config.module.rules.push({
-    test: /\.js$/,
+    test: /\.mjs$/,
     exclude: /node_modules/,
     use: [{ loader: 'import-meta-loader' }]
 })
