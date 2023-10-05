@@ -4,11 +4,13 @@
   "main": "index.js",
   "private": true,
   "workspaces": [
-    "webApp"
+    "webApp",
+    "build/js/packages/make-friends-with-kotlin-devs-common"
   ],
   "scripts": {
     "start:api": "./gradlew :backendApp:run",
-    "start:web": "npm run dev --workspace=webApp"
+    "start:web": "npm run build:common && npm run dev --workspace=webApp",
+    "build:common": "./gradlew :common:compileProductionExecutableKotlinJs"
   },
   "author": "Artem Kobzar",
   "license": "MIT"
