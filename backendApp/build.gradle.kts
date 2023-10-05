@@ -9,6 +9,7 @@ application {
 }
 
 dependencies {
+    implementation(projects.common)
     implementation(libs.konform)
     implementation(libs.ktor.serialization)
     implementation(libs.ktor.serialization.json)

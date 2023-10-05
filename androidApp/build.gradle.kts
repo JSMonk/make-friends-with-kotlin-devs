@@ -36,6 +36,7 @@ dependencies {
     api(libs.androidx.appcompat)
     api(libs.androidx.activityCompose)
 
+    implementation(projects.common)
     implementation(compose.material3)
     implementation(compose.runtime)
     implementation(compose.foundation)
