@@ -19,6 +19,7 @@ rootProject.name = "conference-cms"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
+
 include(":common")
 include(":backendApp")
 include(":androidApp")
