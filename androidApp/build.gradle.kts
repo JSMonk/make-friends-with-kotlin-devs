@@ -49,4 +49,5 @@ dependencies {
     implementation(compose.runtime)
     implementation(compose.foundation)
     implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+    implementation("io.konform:konform:0.4.0")
 }

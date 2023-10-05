@@ -21,7 +21,7 @@ fun TalkInfo(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TalkTitle(talk.title) { onValueChange(talk.copy(title = it)) }
-        TalkDescription(talk.description) { onValueChange(talk.copy(description = it)) }
+        TalkTitle(talk.title, vm.validationErrorFor(Talk::title)) { onValueChange(talk.copy(title = it)) }
+        TalkDescription(talk.description, vm.validationErrorFor(Talk::description)) { onValueChange(talk.copy(description = it)) }
     }
 }

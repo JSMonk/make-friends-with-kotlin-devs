@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import example.profile.api.model.Speaker
+import example.profile.api.model.Talk
 import example.profile.viewmodel.ProfileViewModel
 
 @Composable
@@ -22,8 +23,8 @@ fun SpeakerInfo(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         SpeakerImage(speaker.image) { onValueChange(speaker.copy(image = it)) }
-        SpeakerName(speaker.name) { onValueChange(speaker.copy(name = it)) }
-        SpeakerCompany(speaker.position) { onValueChange(speaker.copy(position = it)) }
-        SpeakerDescription(speaker.about) { onValueChange(speaker.copy(about = it)) }
+        SpeakerName(speaker.name, vm.validationErrorFor(Talk::speaker, Speaker::name)) { onValueChange(speaker.copy(name = it)) }
+        SpeakerCompany(speaker.position, vm.validationErrorFor(Talk::speaker, Speaker::position)) { onValueChange(speaker.copy(position = it)) }
+        SpeakerDescription(speaker.about, vm.validationErrorFor(Talk::speaker, Speaker::about)) { onValueChange(speaker.copy(about = it)) }
     }
 }
