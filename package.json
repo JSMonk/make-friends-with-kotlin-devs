@@ -1,0 +1,15 @@
+{
+  "name": "make-friends-with-kotlin-devs",
+  "version": "0.0.1",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "webApp"
+  ],
+  "scripts": {
+    "start:api": "./gradlew :backendApp:run",
+    "start:web": "npm run dev --workspace=webApp"
+  },
+  "author": "Artem Kobzar",
+  "license": "MIT"
+}
