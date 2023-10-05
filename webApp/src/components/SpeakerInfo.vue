@@ -10,12 +10,14 @@ enum Mutation {
 <script lang="ts" setup>
 import SpeakerImage from "./SpeakerImage.vue"
 import PrettyInput from "@/components/PrettyInput.vue";
+import type {JsValidationResult, Talk} from "make-friends-with-kotlin-devs-common";
 
 const props = defineProps<{
   name: string,
   about: string,
   image: string,
   position: string,
+  validations?: JsValidationResult<Talk>
 }>()
 
 const emit = defineEmits(Object.values(Mutation))
@@ -30,15 +32,18 @@ const emit = defineEmits(Object.values(Mutation))
       <PrettyInput
           class="name"
           :value="props.name"
+          :error="props.validations?.validationErrorFor(['speaker', 'name'])"
           @change="emit(Mutation.NAME, $event.target.value)" />
       <PrettyInput
           class="position"
           :value="props.position"
+          :error="props.validations?.validationErrorFor(['speaker', 'position'])"
           @change="emit(Mutation.POSITION, $event.target.value)" />
       <PrettyInput
           class="about"
           :single-line="false"
           :value="props.about"
+          :error="props.validations?.validationErrorFor(['speaker', 'about'])"
           @change="emit(Mutation.ABOUT, $event.target.value)" />
     </form>
   </div>
