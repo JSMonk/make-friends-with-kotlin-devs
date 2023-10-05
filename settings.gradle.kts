@@ -19,6 +19,7 @@ rootProject.name = "make-friends-with-kotlin-devs"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
+
 include(":common")
 include(":backendApp")
 include(":androidApp")
