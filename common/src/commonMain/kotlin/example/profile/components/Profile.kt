@@ -1,6 +1,5 @@
 package example.profile.components.components
 
-import example.profile.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -19,8 +18,10 @@ import example.profile.components.talk.TalkInfo
 import example.profile.constants.DarkGrey
 import example.profile.components.talk.SaveButton
 import example.profile.viewmodel.ProfileViewModel
-import androidx.compose.ui.res.painterResource
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun Profile(vm: ProfileViewModel) {
     LaunchedEffect(Unit) {
@@ -32,7 +33,7 @@ fun Profile(vm: ProfileViewModel) {
             Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                 Column(
                     modifier = Modifier.paint(
-                        painterResource(R.drawable.background),
+                        painterResource("background.png"),
                         contentScale = ContentScale.Crop
                     )
                 ) {
