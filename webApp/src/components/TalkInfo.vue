@@ -6,10 +6,12 @@ enum Mutation {
 </script>
 <script setup lang="ts">
 import PrettyInput from "@/components/PrettyInput.vue";
+import type {JsValidationResult, Talk} from "make-friends-with-kotlin-devs-common";
 
 const props = defineProps<{
   title: string,
   description: string,
+  validations?: JsValidationResult<Talk>
 }>()
 const emit = defineEmits(Object.values(Mutation))
 </script>
@@ -19,11 +21,13 @@ const emit = defineEmits(Object.values(Mutation))
     <PrettyInput
         class="title"
         :value="props.title"
+        :error="props.validations?.validationErrorFor(['title'])"
         @change="emit(Mutation.TITLE, $event.target.value)" />
     <PrettyInput
         class="description"
         :single-line="false"
         :value="props.description"
+        :error="props.validations?.validationErrorFor(['description'])"
         @change="emit(Mutation.DESCRIPTION, $event.target.value)" />
   </form>
 </template>
