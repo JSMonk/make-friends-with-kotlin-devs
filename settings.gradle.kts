@@ -24,5 +24,6 @@ pluginManagement {
 
 rootProject.name = "make-friends-with-kotlin-devs"
 
+include(":common")
 include(":backendApp")
 include(":androidApp")
