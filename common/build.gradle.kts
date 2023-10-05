@@ -27,6 +27,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation("io.konform:konform:0.4.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
             }
         }
