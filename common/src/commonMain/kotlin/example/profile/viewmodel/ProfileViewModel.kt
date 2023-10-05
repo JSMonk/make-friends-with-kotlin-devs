@@ -3,14 +3,16 @@ package example.profile.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import example.profile.api.model.Talk
 import example.profile.api.validation.validateTalk
 import example.profile.services.fetchTalkInfo
 import io.konform.validation.Valid
 import io.konform.validation.ValidationResult
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+
+expect abstract class ViewModel()
+expect val ViewModel.viewModelScope: CoroutineScope
 
 class ProfileViewModel : ViewModel() {
     var talk: Talk? by mutableStateOf<Talk?>(null)

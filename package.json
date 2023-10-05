@@ -10,8 +10,12 @@
   "scripts": {
     "start:api": "./gradlew :backendApp:run",
     "start:web": "npm run build:common && npm run dev --workspace=webApp",
-    "build:common": "./gradlew :common:jsBrowserProductionLibraryDistribution"
+    "build:common": "./gradlew :common:jsBrowserProductionLibraryDistribution",
+    "start:composeWeb": "./gradlew :composeWebApp:jsBrowserDevelopmentRun"
   },
   "author": "Artem Kobzar",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "import-meta-loader": "^1.1.0"
+  }
 }
