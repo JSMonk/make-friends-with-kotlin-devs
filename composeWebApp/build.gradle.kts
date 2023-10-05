@@ -29,12 +29,6 @@ kotlin {
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>().configureEach {
-    kotlinOptions {
-        useEsClasses = true
-    }
-}
-
 compose.experimental {
     web.application {}
 }
