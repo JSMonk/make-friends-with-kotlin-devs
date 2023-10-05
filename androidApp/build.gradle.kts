@@ -22,9 +22,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    buildTypes.forEach {
-        it.buildConfigField("String", "API_URL", "\"http://10.0.2.2:9090\"")
-    }
 }
 
 
@@ -41,10 +38,6 @@ dependencies {
     api("androidx.core:core-ktx:1.9.0")
     api("androidx.appcompat:appcompat:1.6.1")
     api("androidx.activity:activity-compose:1.6.1")
-    implementation("io.ktor:ktor-client-core:$ktorVersion")
-    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
     implementation(compose.material3)
     implementation(compose.runtime)
     implementation(compose.foundation)
