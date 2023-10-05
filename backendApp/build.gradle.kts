@@ -12,6 +12,7 @@ val ktorVersion = extra["ktor.version"]
 val serializationVersion = extra["kotlinx.serialization.version"]
 
 dependencies {
+    implementation(project(":common"))
     implementation("io.ktor:ktor-serialization:$ktorVersion")
     implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
