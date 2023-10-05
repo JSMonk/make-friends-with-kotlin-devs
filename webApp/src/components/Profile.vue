@@ -6,6 +6,7 @@ import {JsValidationResult, ProfileViewModel, runValidations, Talk, talkValidati
 
 const vm = new ProfileViewModel()
 const talk = ref(await vm.fetchTalkInfo())
+
 const validations = ref<JsValidationResult<Talk> | undefined>()
 watch(talk.value, (newTalk) => {
   const validationResult = runValidations(talkValidation.get(), newTalk)
