@@ -1,18 +1,25 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import TalkInfo from "@/components/TalkInfo.vue";
 import SpeakerInfo from "@/components/SpeakerInfo.vue";
 import {fetchTalkInfo, updateTalkInfo} from "@/services/talks";
+import {JsValidationResult, runValidations, Talk, talkValidation} from "make-friends-with-kotlin-devs-common";
 
 const talk = ref(await fetchTalkInfo())
+const validations = ref<JsValidationResult<Talk> | undefined>()
+watch(talk.value, (newTalk) => {
+  const validationResult = runValidations(talkValidation.get(), newTalk)
+  validations.value = validationResult.isValid ? undefined : validationResult
+})
 </script>
 
 <template>
   <div class="content">
     <header>
       <div class="container save-button-container">
-        <button class="save" @click="updateTalkInfo(talk)">Save</button>
+        <button class="save" :disabled="validations !== undefined" @click="updateTalkInfo(talk)">Save</button>
         <SpeakerInfo
+            :validations="validations"
             v-model:name="talk.speaker.name"
             v-model:about="talk.speaker.about"
             v-model:image="talk.speaker.image"
@@ -22,6 +29,7 @@ const talk = ref(await fetchTalkInfo())
     <main>
       <div class="container">
           <TalkInfo
+              :validations="validations"
               v-model:title="talk.title"
               v-model:description="talk.description" />
       </div>
