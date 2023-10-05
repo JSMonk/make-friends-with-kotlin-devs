@@ -40,6 +40,7 @@ dependencies {
     implementation(compose.material3)
     implementation(compose.runtime)
     implementation(compose.foundation)
+    implementation(libs.konform)
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.okhttp)
     implementation(libs.ktor.client.contentNegotiation)
