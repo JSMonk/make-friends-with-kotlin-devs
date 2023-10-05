@@ -9,6 +9,7 @@ version = "1.0-SNAPSHOT"
 kotlin {
     jvm()
     androidTarget()
+    jvmToolchain(11)
     js {
         browser()
         binaries.library()
@@ -24,6 +25,9 @@ kotlin {
             dependencies {
                 implementation(libs.konform)
                 implementation(libs.kotlinx.serialization.json)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.contentNegotiation)
+                implementation(libs.ktor.serialization.json)
             }
         }
     }
@@ -36,8 +40,12 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 
+    buildFeatures {
+        buildConfig = true
+    }
     defaultConfig {
         minSdk = 28
+        buildConfigField("String", "API_URL", "\"http://10.0.2.2:9090\"")
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
