@@ -53,10 +53,6 @@ const emit = defineEmits(Object.values(Mutation))
 .image {
   margin-right: 50px;
 }
-.image img {
-  width: 185px;
-  height: 185px;
-}
 .speaker-info {
   width: 100%;
 }
