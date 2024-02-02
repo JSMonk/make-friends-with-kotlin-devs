@@ -1,5 +1,7 @@
 plugins {
+    alias(libs.plugins.compose)
     alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlinx.serialization)
 }
@@ -24,10 +26,22 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.konform)
+                implementation(compose.ui)
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.components.resources)
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.contentNegotiation)
                 implementation(libs.ktor.serialization.json)
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                api(libs.androidx.core)
+                api(libs.androidx.appcompat)
+                api(libs.androidx.activityCompose)
             }
         }
     }
