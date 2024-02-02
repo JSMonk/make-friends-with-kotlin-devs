@@ -10,7 +10,7 @@
   "scripts": {
     "start:api": "./gradlew :backendApp:run",
     "start:web": "npm run build:common && npm run dev --workspace=webApp",
-    "build:common": "./gradlew :common:compileProductionExecutableKotlinJs"
+    "build:common": "./gradlew :common:compileProductionExecutableKotlinJs && cp ./common/build/processedResources/js/main/skiko.js webApp/public/ && cp ./common/build/processedResources/js/main/skiko.wasm webApp/public/"
   },
   "author": "Artem Kobzar",
   "license": "MIT"
