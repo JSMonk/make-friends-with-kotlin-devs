@@ -8,11 +8,11 @@ import androidx.compose.ui.window.CanvasBasedWindow
 import org.jetbrains.skiko.wasm.onWasmReady
 import kotlin.coroutines.suspendCoroutine
 
+private var props by mutableStateOf(SpeakerImageProps())
+
 @JsExport
-class SpeakerImageProps(val base64: String) {
-    companion object {
-        var props by mutableStateOf(SpeakerImageProps(""))
-    }
+class SpeakerImageProps @JsExport.Ignore constructor() {
+    lateinit var base64: String
 }
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -24,7 +24,12 @@ fun renderSpeakerImage(id: String, onValueChange: (String) -> Unit = {}) {
             requestResize = suspend { suspendCoroutine {  } },
             applyDefaultStyles = true
         ) {
-            SpeakerImage(SpeakerImageProps.props.base64, onValueChange = onValueChange)
+            SpeakerImage(props.base64, onValueChange = onValueChange)
         }
     }
+}
+
+@JsExport
+fun updateProps(update: SpeakerImageProps.() -> Unit) {
+    props = SpeakerImageProps().apply(update)
 }
