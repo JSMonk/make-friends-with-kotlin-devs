@@ -4,19 +4,25 @@ enum Mutation {
 }
 </script>
 <script setup lang="ts">
-import {onMounted, shallowRef, watchEffect} from "vue";
-import {renderSpeakerImage, Speaker, SpeakerImageProps} from "make-friends-with-kotlin-devs-common";
+import {onMounted, watchEffect} from "vue";
+import {renderSpeakerImage, updateProps} from "make-friends-with-kotlin-devs-common";
 
 const CANVAS_ID = "SpeakerImage"
 const props = defineProps<{ src: string }>()
 const emit = defineEmits(Object.values(Mutation))
-// const speakerImageProps = shallowRef(new SpeakerImageProps(props.src))
 
 const onChangeImage = (newBase64: string) =>
     emit(Mutation.SRC, newBase64)
 
-watchEffect(() => SpeakerImageProps.Companion.props = new SpeakerImageProps(props.src))
+
+watchEffect(() =>
+  updateProps(composeProps => {
+    composeProps.base64 = props.src
+  })
+)
+
 onMounted(() => renderSpeakerImage(CANVAS_ID, onChangeImage))
+
 </script>
 
 <template>
