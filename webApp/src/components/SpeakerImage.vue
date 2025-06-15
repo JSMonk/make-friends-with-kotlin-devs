@@ -15,7 +15,7 @@ const onSelectFile = () => {
   if (files && files[0]) {
     const reader = new FileReader
     reader.onload = e => {
-      emit(Mutation.SRC, e.target.result)
+      emit(Mutation.SRC, e.target?.result)
     }
     reader.readAsDataURL(files[0])
   }

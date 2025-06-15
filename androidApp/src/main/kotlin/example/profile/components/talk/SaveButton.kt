@@ -33,7 +33,7 @@ fun SaveButton(
         )
     ) {
         Text(
-            text = "Save".toUpperCase(),
+            text = "Save".uppercase(),
             color = Color.Black,
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold
