@@ -5,12 +5,12 @@
   "private": true,
   "workspaces": [
     "webApp",
-    "build/js/packages/make-friends-with-kotlin-devs-common"
+    "common/build/dist/js/productionLibrary"
   ],
   "scripts": {
     "start:api": "./gradlew :backendApp:run",
     "start:web": "npm run build:common && npm run dev --workspace=webApp",
-    "build:common": "./gradlew :common:compileProductionExecutableKotlinJs"
+    "build:common": "./gradlew :common:jsBrowserProductionLibraryDistribution"
   },
   "author": "Artem Kobzar",
   "license": "MIT"
