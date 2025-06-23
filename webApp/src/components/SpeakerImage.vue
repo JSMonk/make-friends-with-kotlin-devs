@@ -7,13 +7,14 @@ enum Mutation {
 import {onMounted, watchEffect} from "vue";
 import {renderSpeakerImage, updateProps} from "make-friends-with-kotlin-devs-common";
 
-const CANVAS_ID = "SpeakerImage"
+const CONTAINER_ID = "SpeakerImage"
 const props = defineProps<{ src: string }>()
 const emit = defineEmits(Object.values(Mutation))
 
-const onChangeImage = (newBase64: string) =>
-    emit(Mutation.SRC, newBase64)
-
+const onChangeImage = (newBase64: string) => {
+  console.log("newBase64", newBase64)
+  emit(Mutation.SRC, newBase64)
+}
 
 watchEffect(() =>
   updateProps(composeProps => {
@@ -21,12 +22,13 @@ watchEffect(() =>
   })
 )
 
-onMounted(() => renderSpeakerImage(CANVAS_ID, onChangeImage))
+onMounted(() => renderSpeakerImage(CONTAINER_ID, onChangeImage))
 
 </script>
 
 <template>
-  <canvas :id="CANVAS_ID" width="185" height="185" class="image-input"></canvas>
+  <div :id="CONTAINER_ID" class="image-input">
+  </div>
 </template>
 
 <style scoped>
@@ -34,5 +36,7 @@ onMounted(() => renderSpeakerImage(CANVAS_ID, onChangeImage))
   display: block;
   cursor: pointer;
   position: relative;
+  width: 185px;
+  height: 185px;
 }
 </style>

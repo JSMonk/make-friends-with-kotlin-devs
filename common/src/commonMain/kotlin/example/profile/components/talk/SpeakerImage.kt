@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
-const val BASE64_PREFIX = "data:image/png;base64,"
+const val BASE64_PREFIX = "data:image/.+?;base64,"
 
 expect internal fun ByteArray.toImageBitmap(): ImageBitmap
 @Composable
@@ -35,7 +35,7 @@ fun SpeakerImage(
     val imageSize = 185.dp
     val imagePadding = 16.dp
     val transparentBlack = Color.Black.copy(alpha = 0.5f)
-    val data = Base64.decode(base64.substringAfter(BASE64_PREFIX))
+    val data = Base64.decode(base64.replace(BASE64_PREFIX.toRegex(), ""))
     val photoPickerLauncher = createPhotoPickerLauncher(onValueChange)
     Box(modifier = modifier) {
         Image(
