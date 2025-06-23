@@ -1,12 +1,12 @@
 package example.profile.components.talk
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.window.CanvasBasedWindow
+import androidx.compose.ui.window.ComposeViewport
 import org.jetbrains.skiko.wasm.onWasmReady
-import kotlin.coroutines.suspendCoroutine
 
 private var props by mutableStateOf(SpeakerImageProps())
 
@@ -19,11 +19,7 @@ class SpeakerImageProps @JsExport.Ignore constructor() {
 @JsExport
 fun renderSpeakerImage(id: String, onValueChange: (String) -> Unit = {}) {
     onWasmReady {
-        CanvasBasedWindow(
-            canvasElementId = id,
-            requestResize = suspend { suspendCoroutine {  } },
-            applyDefaultStyles = true
-        ) {
+        ComposeViewport(id) {
             SpeakerImage(props.base64, onValueChange = onValueChange)
         }
     }
