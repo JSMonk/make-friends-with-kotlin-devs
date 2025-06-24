@@ -3,7 +3,7 @@ import {ref, watch} from "vue";
 import TalkInfo from "@/components/TalkInfo.vue";
 import SpeakerInfo from "@/components/SpeakerInfo.vue";
 import {fetchTalkInfo, updateTalkInfo} from "@/services/talks";
-import {JsValidationResult, runValidations, Talk, talkValidation} from "make-friends-with-kotlin-devs-common";
+import {JsValidationResult, runValidations, Talk, talkValidation} from "conference-cms-common";
 
 const talk = ref(await fetchTalkInfo())
 const validations = ref<JsValidationResult<Talk> | undefined>()

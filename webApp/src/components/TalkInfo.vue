@@ -6,7 +6,7 @@ enum Mutation {
 </script>
 <script setup lang="ts">
 import PrettyInput from "@/components/PrettyInput.vue";
-import type {JsValidationResult, Talk} from "make-friends-with-kotlin-devs-common";
+import type {JsValidationResult, Talk} from "conference-cms-common";
 
 const props = defineProps<{
   title: string,
