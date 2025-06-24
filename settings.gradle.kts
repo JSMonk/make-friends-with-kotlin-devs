@@ -15,7 +15,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "make-friends-with-kotlin-devs"
+rootProject.name = "conference-cms"
 
 include(":backendApp")
 include(":androidApp")
