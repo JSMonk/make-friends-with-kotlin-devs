@@ -5,7 +5,7 @@ enum Mutation {
 </script>
 <script setup lang="ts">
 import {onMounted, watchEffect} from "vue";
-import {renderSpeakerImage, updateProps} from "make-friends-with-kotlin-devs-common";
+import {renderSpeakerImage, updateProps} from "conference-cms-common";
 
 const CONTAINER_ID = "SpeakerImage"
 const props = defineProps<{ src: string }>()
