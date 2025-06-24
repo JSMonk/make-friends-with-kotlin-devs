@@ -10,7 +10,7 @@ enum Mutation {
 <script lang="ts" setup>
 import SpeakerImage from "./SpeakerImage.vue"
 import PrettyInput from "@/components/PrettyInput.vue";
-import type {JsValidationResult, Talk} from "make-friends-with-kotlin-devs-common";
+import type {JsValidationResult, Talk} from "conference-cms-common";
 
 const props = defineProps<{
   name: string,
