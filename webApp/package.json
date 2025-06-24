@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "vue": "^3.3.4",
-    "make-friends-with-kotlin-devs-common": "1.0.0-SNAPSHOT"
+    "conference-cms-common": "1.0.0-SNAPSHOT"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.3.3",
