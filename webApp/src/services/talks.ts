@@ -1,5 +1,5 @@
 import {API_URL} from "@/services/varibles";
-import {Talk} from "make-friends-with-kotlin-devs-common";
+import {Talk} from "conference-cms-common";
 
 export function fetchTalkInfo(): Promise<Talk> {
     return fetch(`${API_URL}/talk`)
