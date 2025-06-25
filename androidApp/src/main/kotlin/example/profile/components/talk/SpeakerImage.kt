@@ -30,7 +30,7 @@ import java.io.ByteArrayOutputStream
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
-const val BASE64_PREFIX = "data:image/png;base64,"
+const val BASE64_PREFIX = "data:image/.+?;base64,"
 
 private fun ByteArray.toImageBitmap(): ImageBitmap {
     return BitmapFactory.decodeByteArray(this, 0, size).asImageBitmap()
@@ -59,7 +59,7 @@ fun SpeakerImage(base64: String, onValueChange: (String) -> Unit = {}) {
     val imageSize = 185.dp
     val imagePadding = 16.dp
     val transparentBlack = Color.Black.copy(alpha = 0.5f)
-    val data = Base64.decode(base64.substringAfter(BASE64_PREFIX))
+    val data = Base64.decode(base64.replace(BASE64_PREFIX.toRegex(), ""))
     val photoPickerLauncher = createPhotoPickerLauncher(onValueChange)
     Box(modifier = Modifier.padding(PaddingValues(bottom = 15.dp))) {
         Image(
